@@ -1,0 +1,51 @@
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Création d'équipe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+<div class="container mt-5">
+    <h2 class="mb-4">Création d'Équipe</h2>
+
+    <form action="/votre-endpoint-de-creation" method="POST">
+        <div class="form-group">
+            <label for="nom">Nom de l'Équipe:</label>
+            <input type="text" class="form-control" id="nom" name="nom" required
+            [(ngModel)]="equipe.nom" [ngModelOptions]="{standalone: true}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="statut">Membre Equipe :</label>
+            <select class="form-control" id="statut" name="statute"
+            [(ngModel)]="equipe.membre" [ngModelOptions]="{standalone: true}" required>
+                <option value="1">Equipe 1</option>
+                <option value="2">Equipe 2</option>
+                <option value="3">Equipe 3</option>
+            </select>
+        </div>
+
+          
+          
+
+        <div class="form-group">
+            <label for="chefprojet">Chef de projet :</label>
+            <input type="text" class="form-control" id="chefprojet" name="chefprojet" required
+            [(ngModel)]="equipe.chefprojet" [ngModelOptions]="{standalone: true}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="role">Rôle :</label>
+            <input type="text" class="form-control" id="role" name="role" required
+            [(ngModel)]="equipe.role" [ngModelOptions]="{standalone: true}" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary"  (click)="onClick()">Créer</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+
+
