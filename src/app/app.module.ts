@@ -13,6 +13,11 @@ import { ProjetComponent } from './projet/projet.component';
 import { EquipeComponent } from './equipe/equipe.component';
 import { CreerComponent } from './creer/creer.component';
 import { HomeComponent } from './home/home.component';
+import { ListeprojetComponent } from './listeprojet/listeprojet.component';
+import { ListeComponent } from './liste/liste.component';
+import { ListepComponent } from './listep/listep.component';
+import { LailalisteComponent } from './lailaliste/lailaliste.component';
+
 // Assurez-vous d'importer cela
 
 
@@ -25,7 +30,12 @@ import { HomeComponent } from './home/home.component';
     ProjetComponent,
     EquipeComponent,
     CreerComponent,
-    HomeComponent
+    HomeComponent,
+    ListeprojetComponent,
+    ListeComponent,
+    ListepComponent,
+    LailalisteComponent
+
   ],
   imports: [
     BrowserModule,

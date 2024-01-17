@@ -1,25 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-creer',
   templateUrl: './creer.component.html',
-  styleUrl: './creer.component.css'
+  styleUrls: ['./creer.component.css']  // Utilisez 'styleUrls' au lieu de 'styleUrl'
 })
-export class CreerComponent implements OnInit{
-  apiEndpoint = 'http://localhost:8080/Project/Getprojects'; 
-  projets: any[] = [];// Replace with your API endpoint
-  constructor(private http: HttpClient) {}
+export class CreerComponent implements OnInit {
+  project: { nom: string, description: string, date_debut: string, date_fin: string, statute: string }
+    = { nom: '', description: '', date_debut: '', date_fin: '', statute: '' };
 
-ngOnInit(): void {
-    this.http.get<any[]>(this.apiEndpoint).subscribe(
+  apidata: any[] = [];
+  path: string = 'http://localhost:8080/Project/Getprojects';
+
+  validation: string = "false";
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+    this.http.get<any[]>('http://localhost:8080/Project/Getprojects').subscribe(
       (data) => {
-        this.projets = data;  // Supposons que votre API renvoie un tableau d'objets utilisateurs
+        this.apidata = data;
       },
       (error) => {
-        console.error('Erreur lors de la récupération des utilisateurs', error);
+        console.error('Une erreur s\'est produite lors de la récupération des projets:', error);
       }
     );
-}
+  }
+
+  onClick(): void {
+    const apiUrl = 'http://localhost:8080/Project/Add';
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    this.http.post(apiUrl, this.project, { headers }).subscribe(
+      (data: any) => {
+        this.validation = "true";
+        alert("Votre projet a été créé avec succès !");
+      },
+      (error) => {
+        console.error('POST Error:', error);
+      }
+    );
+  }
 }

@@ -7,7 +7,7 @@
 
 
 <div class="container mt-5">
-    <h2 class="mb-4">Création d'Équipe</h2>
+    <h2 class="mb-4">Création d'équipe</h2>
 
     <form action="/votre-endpoint-de-creation" method="POST">
         <div class="form-group">
@@ -17,7 +17,7 @@
         </div>
 
         <div class="form-group">
-            <label for="statut">Membre Equipe :</label>
+            <label for="statut">Membre d'équipe :</label>
             <select class="form-control" id="statut" name="statute"
             [(ngModel)]="equipe.membre" [ngModelOptions]="{standalone: true}" required>
                 <option value="1">Equipe 1</option>
@@ -41,11 +41,39 @@
             [(ngModel)]="equipe.role" [ngModelOptions]="{standalone: true}" required>
         </div>
 
-        <button type="submit" class="btn btn-primary"  (click)="onClick()">Créer</button>
+        <button type="submit" class="btn btn-success"  (click)="onClick()">Créer</button>
     </form>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
 
+<div class="container mt-4">
+    <h2>Liste des Équipe</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>membre</th>
+          <th>chef de projet</th>
+          <th>rôle </th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let equipe of apidata">
+          <td>{{ equipe.nom }}</td>
+          <td>{{ equipe.membre }}</td>
+          <td>{{ equipe.chefprojet  }}</td>
+          <td>{{ equipe.role }}</td>
+   
+          <td>
+            <button class="btn btn-primary" (click)="onUpdate(equipe.id)">Update</button>
+            <button class="btn btn-danger" (click)="onDelete(equipe.id)">Delete</button>
+      
+        </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
 

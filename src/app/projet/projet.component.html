@@ -45,14 +45,47 @@
                     </select>
                 </div>
 
-                <button type="submit" class="btn btn-primary" (click)="onClick()">Soumettre</button>
-                <h4>{{validation}}</h4>
+                <button type="submit" class="btn btn-success" (click)="onClick()">Soumettre</button>
+          
             </form>
         </div>
     </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs
+/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+
+  
+
+
+<div class="container mt-4">
+    <h2>Liste des projets</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Description</th>
+          <th>Date début</th>
+          <th>Date fin</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of apidata">
+          <td>{{ project.nom }}</td>
+          <td>{{ project.description }}</td>
+          <td>{{ project.date_debut | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ project.date_fin | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ project.statute }}</td>
+          <td>
+            <button class="btn btn-primary">Update</button>
+            <button class="btn btn-danger" (click)="onDelete(project.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
